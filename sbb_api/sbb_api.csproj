@@ -22,12 +22,4 @@
   <ItemGroup>
     <Compile Remove="Controllers\ValuesController.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Remove="credentials.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="credentials.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>

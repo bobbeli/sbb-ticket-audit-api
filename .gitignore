@@ -7,6 +7,9 @@
 packages/
 TestResults/
 
+sbb_api/credentials.json
+token.json/*
+
 # globs
 Makefile.in
 *.DS_Store
