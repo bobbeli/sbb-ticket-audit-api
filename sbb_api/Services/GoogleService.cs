@@ -22,11 +22,23 @@ namespace sbb_api.Services
     
         public GmailService GmailService { get; set; }
         private string[] Scopes = { GmailService.Scope.GmailReadonly };
+        private static GoogleService instance;
 
 
-        public GoogleService()
+        private GoogleService()
         {
             this.SetUpService();
+        }
+
+        public static GoogleService Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new GoogleService();
+
+                return instance;
+            }
         }
 
         private void SetUpService()

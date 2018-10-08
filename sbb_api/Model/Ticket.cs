@@ -1,11 +1,19 @@
 ﻿using System;
+using LiteDB;
+
 namespace sbb_api.Model
 {
     public class Ticket
     {
+        public Ticket(){
+            _id = ObjectId.NewObjectId();
+        }
+
         public enum TicketType { Regular, SuperSaver };
 
-        public String Id { get; set; }
+        public ObjectId _id { get; set; }
+
+        public String _idMailProvider { get; set; }
 
         public DateTime CreationDate { get; set; }
 

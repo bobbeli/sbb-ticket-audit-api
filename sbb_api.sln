@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sbb_api", "sbb_api\sbb_api.csproj", "{CAF1A8BC-825A-48E9-B016-3B6589315F19}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{573F9167-5A94-41A7-AE0C-A8BEC825622B}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +18,13 @@ Global
 		{CAF1A8BC-825A-48E9-B016-3B6589315F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAF1A8BC-825A-48E9-B016-3B6589315F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAF1A8BC-825A-48E9-B016-3B6589315F19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.StandardHeader = $2
+		$0.VersionControlPolicy = $3
+		description = SBB Ticket Audit API
 	EndGlobalSection
 EndGlobal

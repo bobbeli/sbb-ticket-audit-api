@@ -48,14 +48,15 @@ namespace sbb_api.Helper
             }
 
             // Get the Ticket ID
-
             Regex idRegex = new Regex("\\d{12}", RegexOptions.IgnoreCase);
             Match id = idRegex.Match(base64Encoded);
 
-            if( id.Success )
+            if (id.Success)
             {
-                ticket.Id = id.Groups[0].Value;
+                ticket._idMailProvider = id.Groups[0].Value;
             }
+
+
 
             ticket.Type = Ticket.TicketType.Regular;
             

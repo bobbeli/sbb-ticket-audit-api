@@ -21,16 +21,10 @@ namespace sbb_api
             // Creating User Storage
             UserRepository UserRepository = UserRepository.Instance;
 
-            // Load Dummy Data 
-            User u = new User();
-            u.FirstName = "Petra";
-            u.LastName = "Super";
-            u.Email = "petra@colio.ch";
+            //DBService.Instance.StoreUser(u);
 
-            DBService.Instance.StoreUser(u);
-
-            DBService.Instance.LoadAllUsers();
-
+            //DBService.Instance.LoadAllUsers();
+            
             CreateWebHostBuilder(args).Build().Run();
 
            

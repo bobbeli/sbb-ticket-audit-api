@@ -21,18 +21,35 @@ namespace sbb_api.Controllers
             this.TicketService = TicketService.Instance;
         }
 
+
+
+        [HttpPost]
+        public IActionResult SyncWithMailServer([FromBody]User user)
+        {
+            if( UserRepository.Instance.Exist(user) )
+            {
+                if (TicketService.SyncMailsFromServer(user))
+                {
+                    return Ok();
+                }
+
+                return NotFound("Interner Serverfehler. ");
+            }
+            else
+            {
+                return NotFound("Nutzer " + user.Email + " existiert nicht.");
+            }
+
+        }
+
         [HttpPost]
         public IActionResult GetTickets([FromBody]User user)
         {
             if( UserRepository.Instance.Exist(user) )
             {
-                return Ok(Json(TicketService.LoadEmails(user)));
+                return Ok(Json(DBService.Instance.GetTickets(user)));
             }
-            else
-            {
-                return NotFound("User Not found.");
-            }
-
+            return NotFound("Nutzer " + user.Email + " existiert nicht.");
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using LiteDB;
 using sbb_api.Services;
+using System.Collections.Generic;
 
 namespace sbb_api.Model
 {
@@ -7,11 +9,13 @@ namespace sbb_api.Model
     {
         public User()
         {
-            GmailService = new GoogleService();
-            TicketRepository = new TicketRepository();
+            _id = ObjectId.NewObjectId();
+            TicketList = new List<Ticket>();
         }
 
         public enum AccountType { Google, Outlook };
+
+        public ObjectId _id { get; set;  }
 
         public String Email { get; set; }
 
@@ -23,7 +27,7 @@ namespace sbb_api.Model
 
         public GoogleService GmailService { get; set;  }
 
-        public TicketRepository TicketRepository { get; set; }
+        public List<Ticket> TicketList { get; set;  }
 
     }
 }

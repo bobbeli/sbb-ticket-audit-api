@@ -33,17 +33,11 @@ namespace sbb_api.Services
             }
         }
 
-
-        public List<Ticket> LoadEmails(User RequestingUser)
+        public bool SyncMailsFromServer(User user)
         {
-
-            this.user = UserReop.GetUser(RequestingUser.Email);
-
-            if( this.user == null )
-            {
-                return null;
-            }
-            
+            // ToDo create this Method Async
+            this.user = UserRepository.Instance.GetUser(user.Email);
+            this.user.GmailService = GoogleService.Instance;
 
             List<Message> messageList = this.LoadAllMessagesFromServer();
 
@@ -52,8 +46,14 @@ namespace sbb_api.Services
             {
                 try
                 {
+                    // Loading Body Message of Mail
                     String body = Base64Decoder.Decode(msg.Payload.Parts[0].Parts[0].Body.Data);
-                    this.user.TicketRepository.addTicket(DeserializeTicket.Deserialize(body));
+
+                    // Deserialize Body to Ticket
+                    Ticket ticket = DeserializeTicket.Deserialize(body);
+
+                    // Save Ticket to local user List
+                    this.user.TicketList.Add(ticket);
 
                 }
                 catch (FormatException e)
@@ -68,9 +68,13 @@ namespace sbb_api.Services
 
             });
 
-            this.UserReop.Update(this.user);
+            // Updating DataBase with new Tickets
+            if( DBService.Instance.UpdateUser(this.user) )
+            {
+                return true;
+            }
 
-            return this.user.TicketRepository.GetTickets();
+            return false;
         }
 
         public List<Message> LoadAllMessagesFromServer()

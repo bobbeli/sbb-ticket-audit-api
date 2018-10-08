@@ -22,16 +22,16 @@ namespace sbb_api.Controllers
         public IActionResult Auth([FromBody]User user)
         {
             // Set Up new User Account
-            if ( UserRepository.Instance.Exist(user) )
+            User u = UserRepository.Instance.GetUser(user.Email);
+            if (u != null)
             {
-                // Load User From DB
+                u.GmailService = GoogleService.Instance;
+                UserRepository.Instance.Update(u);
                 return Ok();
-
             } 
             else 
             {
-                UserRepository.Instance.AddUser(user);
-                return Ok();
+                return NotFound("Nutzer " + user.Email + " existiert nicht.");
 
             }
 
