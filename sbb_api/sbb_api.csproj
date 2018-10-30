@@ -18,14 +18,20 @@
     <PackageReference Include="Google.Apis.Gmail.v1" Version="1.35.2.1342" />
     <PackageReference Include="LiteDB" Version="4.1.4" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Controllers\ValuesController.cs" />
+    <Compile Remove="Cors\EmptyClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="App.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="SBBApi.db" />
   </ItemGroup>
 </Project>

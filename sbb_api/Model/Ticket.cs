@@ -20,5 +20,7 @@ namespace sbb_api.Model
         public TicketType Type { get; set; }
 
         public double Price { get; set; }
+
+        public Route Rooute { get; set;  }
     }
 }

@@ -45,7 +45,12 @@ namespace sbb_api.Services
 
         public bool Exist(User user)
         {
-            return this.userList.Exists((u) => u.Email == user.Email);
+            if( user != null )
+            {
+                return this.userList.Exists((u) => u.Email == user.Email);
+            }
+
+            return false;
         }
 
         public User GetUser(String email){

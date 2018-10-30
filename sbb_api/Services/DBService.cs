@@ -47,7 +47,7 @@ namespace sbb_api.Services
                     throw new Exception(e.Message);
                 }
 
-                return tickets;
+                return tickets.OrderByDescending(t => t.CreationDate).ToList();
             }
         }
 

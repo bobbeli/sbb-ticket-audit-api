@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using sbb_api.Model;
 using sbb_api.Services;
-
+using System.Web.Http;
 namespace sbb_api
 {
     public class Program
@@ -30,6 +30,18 @@ namespace sbb_api
            
 
 
+        }
+
+        public static void Register(HttpConfiguration config)
+        {
+            // New code
+            config.EnableCors();
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
