@@ -12,9 +12,5 @@ namespace sbb_api.Model
             this.ToCity = toCity;
         }
 
-
-
-
-
     }
 }

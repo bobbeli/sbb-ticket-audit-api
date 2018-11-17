@@ -33,5 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="SBBApi.db" />
+    <None Remove="SBBApi.db" />
   </ItemGroup>
 </Project>

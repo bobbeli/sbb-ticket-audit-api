@@ -56,7 +56,8 @@ namespace sbb_api.Controllers
             {
                 Response.ContentType = "application/json";
                 Response.StatusCode = 200;
-                return Ok(Json(DBService.Instance.GetTickets(user)));
+                List<Ticket> p = DBService.Instance.GetTickets(user);
+                return Ok(Json(p));
             }
             return NotFound("Nutzer " + user.Email + " existiert nicht.");
         }

@@ -21,6 +21,6 @@ namespace sbb_api.Model
 
         public double Price { get; set; }
 
-        public Route Rooute { get; set;  }
+        public Route Route { get; set;  }
     }
 }
